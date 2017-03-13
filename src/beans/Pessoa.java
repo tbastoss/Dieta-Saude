@@ -1,10 +1,10 @@
 package beans;
 
-public class Pessoas {
+public class Pessoa {
 	private int id;
 	private String nome;
 	
-	public Pessoas(int id){
+	public Pessoa(int id){
 		this.id = id;
 	}
 }
