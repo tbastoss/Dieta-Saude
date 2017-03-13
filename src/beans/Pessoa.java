@@ -1,21 +1,23 @@
 package beans;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 
 public class Pessoa {
 	private int id;
+	private int tipoPessoa;
 	private String cpf;
 	private String nome;
-	private Date dataDeNascimento;
+	private Calendar dataDeNascimento;
 	private String endereco;
 	private String email;
-	private char sexo;
+	private boolean sexo;	//true é M false é F
 	private ArrayList<String> telefones;
 	
 	
-	public Pessoa(int id, String cpf, String nome, Date dataDeNascimento, String endereco, String email, char sexo, ArrayList<String> telefones){
+	public Pessoa(int id, int tipoPessoa, String cpf, String nome, Calendar dataDeNascimento, String endereco, String email, boolean sexo, ArrayList<String> telefones){
 		this.id = id;
+		this.tipoPessoa = tipoPessoa;
 		this.cpf = cpf;
 		this.nome = nome;
 		this.dataDeNascimento = dataDeNascimento;
@@ -33,6 +35,16 @@ public class Pessoa {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public int getTipoPessoa() {
+		return tipoPessoa;
+	}
+
+
+	public void setTipoPessoa(int tipoPessoa) {
+		if (tipoPessoa == 0 || tipoPessoa == 1)
+			this.tipoPessoa = tipoPessoa;
 	}
 
 
@@ -57,15 +69,13 @@ public class Pessoa {
 	}
 
 
-	public Date getDataDeNascimento() {
+	public Calendar getDataDeNascimento() {
 		return dataDeNascimento;
 	}
 
 
-	@SuppressWarnings("deprecation")
-	public void setDataDeNascimento(Date dataDeNascimento) {
-		Date hoje = new Date ();
-		if (dataDeNascimento.getYear() > hoje.getYear())
+	public void setDataDeNascimento(Calendar dataDeNascimento) {
+		if (dataDeNascimento != null)
 			this.dataDeNascimento = dataDeNascimento;
 	}
 
@@ -86,19 +96,18 @@ public class Pessoa {
 
 
 	public void setEmail(String email) {
-		if (email.contains("@hotmail.com") || email.contains("@gmail.com") || email.contains("@yahoo.com.br"))
+		if (email != null)
 			this.email = email;
 	}
 
 
-	public char getSexo() {
+	public boolean getSexo() {
 		return sexo;
 	}
 
 
-	public void setSexo(char sexo) {
-		if (sexo == 'm' || sexo == 'M' || sexo == 'f' || sexo == 'F')
-			this.sexo = sexo;
+	public void setSexo(boolean sexo) {
+		this.sexo = sexo;
 	}
 
 

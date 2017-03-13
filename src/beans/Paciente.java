@@ -1,53 +1,35 @@
 package beans;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 	
 public class Paciente extends Pessoa{
-	private float peso;
-	private int imc;
+	private float peso_atual;
+	private float peso_Inicial;
+	private float imc_Atual;
+	private float imc_Inicial;
 	private float altura;
 	private boolean vegetariano;
 	private boolean intoleranteLactose;
 	private float tmb;
 	private float fatorAtividade;
-	private int pontosDiarios;
-	private Dieta dieta;
-	private Consulta consulta;
+	private ArrayList<Integer> pontosDiarios;
+	private ArrayList <Dieta> dieta;
 	
 	
-	public Paciente(int id, String cpf, String nome, Date dataDeNascimento, String endereco, String email, char sexo, ArrayList<String> telefones, float peso, float altura, boolean vegetariano, boolean intoleranteLactose, float fatorAtividade) {
-		super(id, cpf, nome, dataDeNascimento, endereco, email, sexo, telefones);
-		this.peso = peso;
+	public Paciente(int id, int tipoPessoa, String cpf, String nome, Calendar dataDeNascimento, String endereco, String email, 
+			boolean sexo, ArrayList<String> telefones, float peso_atual, float altura, boolean vegetariano, 
+			boolean intoleranteLactose, float fatorAtividade) {
+		super(id, tipoPessoa, cpf, nome, dataDeNascimento, endereco, email, sexo, telefones);
+		this.peso_atual = peso_atual;
+		this.peso_Inicial = peso_atual;
 		this.altura = altura;
 		this.vegetariano = vegetariano;
 		this.intoleranteLactose = intoleranteLactose;
-		this.fatorAtividade = fatorAtividade;
+		this.setFatorAtividade(fatorAtividade);
+		//this.setTmb();
 	}
-
-
-	public float getPeso() {
-		return peso;
-	}
-
-
-	public void setPeso(float peso) {
-		if(peso > 0)
-			this.peso = peso;
-	}
-
-
-	public int getImc() {
-		return imc;
-	}
-
-
-	public void setImc(int imc) {
-		if (imc > 0)
-			this.imc = imc;
-	}
-
-
+	
 	public float getAltura() {
 		return altura;
 	}
@@ -59,44 +41,19 @@ public class Paciente extends Pessoa{
 	}
 
 
-	public boolean isVegetariano() {
-		return vegetariano;
+	public ArrayList<Dieta> getDieta() {
+		return dieta;
 	}
 
 
-	public void setVegetariano(boolean vegetariano) {
-		this.vegetariano = vegetariano;
-	}
-
-
-	public boolean isIntoleranteLactose() {
-		return intoleranteLactose;
-	}
-
-
-	public void setIntoleranteLactose(boolean intoleranteLactose) {
-		this.intoleranteLactose = intoleranteLactose;
-	}
-
-
-	public float getTmb() {
-		return tmb;
-	}
-
-
-	public void setTmb(float tmb) {
-		if (tmb > 0)
-			this.tmb = tmb;
-	}
-
-
-	public float getFatorAtividade() {
-		return fatorAtividade;
+	public void setDieta(ArrayList<Dieta> dieta) {
+		if (dieta != null)
+			this.dieta = dieta;
 	}
 
 
 	public void setFatorAtividade(float fatorAtividade) {
-		if (this.getSexo() == 'm' || this.getSexo() == 'M'){
+		if (this.getSexo() == true){
 			if(fatorAtividade == 1.2 || fatorAtividade == 1.3 || fatorAtividade == 1.4 || fatorAtividade == 1.5 || fatorAtividade ==  1.6 || fatorAtividade == 1.8)
 				this.fatorAtividade = fatorAtividade;
 		}
@@ -104,41 +61,71 @@ public class Paciente extends Pessoa{
 			if(fatorAtividade == 1.2 || fatorAtividade == 1.3 || fatorAtividade == 1.35 || fatorAtividade == 1.45 || fatorAtividade ==  1.5 || fatorAtividade == 1.7)
 				this.fatorAtividade = fatorAtividade;
 		}
-			
-		
 	}
 
+	public float getPeso_atual() {
+		return peso_atual;
+	}
 
-	public int getPontosDiarios() {
+	public void setPeso_atual(float peso_atual) {
+		if (peso_atual > 0)
+			this.peso_atual = peso_atual;
+	}
+
+	public float getPeso_Inicial() {
+		return peso_Inicial;
+	}
+
+	public float getImc_Atual() {
+		return imc_Atual;
+	}
+
+	public void setImc_Atual(float imc_Atual) {
+		if(imc_Atual > 0)
+			this.imc_Atual = imc_Atual;
+	}
+
+	public float getImc_Inicial() {
+		return imc_Inicial;
+	}
+
+	public void setImc_Inicial(float imc_Inicial) {
+		if (imc_Inicial > 0)
+			this.imc_Inicial = imc_Inicial;
+	}
+
+	public boolean isVegetariano() {
+		return vegetariano;
+	}
+
+	public void setVegetariano(boolean vegetariano) {
+		this.vegetariano = vegetariano;
+	}
+
+	public boolean isIntoleranteLactose() {
+		return intoleranteLactose;
+	}
+
+	public void setIntoleranteLactose(boolean intoleranteLactose) {
+		this.intoleranteLactose = intoleranteLactose;
+	}
+
+	public float getTmb() {
+		return tmb;
+	}
+
+	private void setTmb(int idade, boolean sexo, float peso) {
+		int ano = Calendar.getInstance().get(Calendar.YEAR);
+		idade = ano - this.getDataDeNascimento().YEAR;
+	}
+
+	public ArrayList<Integer> getPontosDiarios() {
 		return pontosDiarios;
 	}
 
-
-	public void setPontosDiarios(int pontosDiarios) {
-		if (pontosDiarios > 0)
+	public void setPontosDiarios(ArrayList<Integer> pontosDiarios) {
+		if (pontosDiarios != null)
 			this.pontosDiarios = pontosDiarios;
-	}
-
-
-	public Dieta getDieta() {
-		return dieta;
-	}
-
-
-	public void setDieta(Dieta dieta) {
-		if (dieta != null)
-		this.dieta = dieta;
-	}
-
-
-	public Consulta getConsulta() {
-		return consulta;
-	}
-
-
-	public void setConsulta(Consulta consulta) {
-		if (consulta != null)
-			this.consulta = consulta;
 	}
 	
 }
