@@ -8,14 +8,21 @@ public class Pessoa {
 	private String cpf;
 	private String nome;
 	private Date dataDeNascimento;
-	private String endereço;
+	private String endereco;
 	private String email;
 	private char sexo;
 	private ArrayList<String> telefones;
 	
 	
-	public Pessoa(int id){
+	public Pessoa(int id, String cpf, String nome, Date dataDeNascimento, String endereco, String email, char sexo, ArrayList<String> telefones){
 		this.id = id;
+		this.cpf = cpf;
+		this.nome = nome;
+		this.dataDeNascimento = dataDeNascimento;
+		this.endereco = endereco;
+		this.email = email;
+		this.sexo = sexo;
+		this.telefones = telefones;		
 	}
 
 
@@ -63,13 +70,13 @@ public class Pessoa {
 	}
 
 
-	public String getEndereço() {
-		return endereço;
+	public String getEndereco() {
+		return endereco;
 	}
 
 
-	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 
