@@ -21,4 +21,8 @@ public class Nutricionista extends Funcionario{
 	public void setHorarioDisponivel(ArrayList<HorarioDisponivel> horarioDisponivel) {
 		this.horarioDisponivel = horarioDisponivel;
 	}
+	
+	public void ExamesParaPaciente(Consulta consulta, Exame exame){
+		consulta.getExames().add(exame);
+	}
 }
