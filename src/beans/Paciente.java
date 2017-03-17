@@ -15,6 +15,7 @@ public class Paciente extends Pessoa{
 	private float fatorAtividade;
 	private ArrayList<Integer> pontosDiarios;
 	private ArrayList <Dieta> dieta;
+	private ArrayList <FichaDeAcompanhamento> fichaDeAcompanhamento;
 	
 	
 	public Paciente(int id, int tipoPessoa, String cpf, String nome, Calendar dataDeNascimento, String endereco, String email, 
