@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 public class Pessoa {
 	private int id;
-	private int tipoPessoa;
+	private int tipoPessoa; //	0 para funcionario e 1 para paciente
 	private String cpf;
 	private String nome;
 	private Calendar dataDeNascimento;
