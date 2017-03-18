@@ -20,7 +20,7 @@ public class Test {
 				
 				String data = simple.format(date_simples);
 				
-				System.out.println("Data Nascimento: " + data_nasc);		
+				System.out.println("Data Nascimento: " + date_simples);		
 	}
 
 }
