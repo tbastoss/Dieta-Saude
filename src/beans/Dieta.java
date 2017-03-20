@@ -41,20 +41,37 @@ public class Dieta {
 		this.suplementoAlimentarConsumido = new ArrayList();
 	}
 	
-	public void AdicionarAlimentoConsumidoExtra(){
+	public void AdicionarAlimentoConsumidoExtra(int id, String descricao, Calendar dia, int pontos, int quantidade){
+		ItemAlimentoConsumidoExtra ae = null;
+		if(descricao != null && dia != null && pontos >= 0 && quantidade > 0){
+			ae = new ItemAlimentoConsumidoExtra (id, descricao, dia, pontos, quantidade);
+			this.alimentoConsumidoExtra.add(ae);
+		}
 		
 	}
 	
-	public void AdicionarAlimentoConsumidoDieta(){
-		
+	public void AdicionarAlimentoConsumidoDieta(int id, Alimento alimentoExtra, int quantidade, Calendar dia){
+		ItemAlimentoConsumidoDieta  ad = null;
+		if (alimentoExtra != null && quantidade > 0 &&  dia != null){
+			ad = new ItemAlimentoConsumidoDieta (id, alimentoExtra, quantidade, dia);
+			this.alimentoConsumidoDieta.add(ad);
+		}
 	}
 	
-	public void AdicionarPraticouAtividadeFisica(){
-		
+	public void AdicionarPraticouAtividadeFisica(int id, TipoAtividadeFisica tipo, float periodo){
+		AtividadeFisica at = null;
+		if (tipo != null && periodo > 0){
+			at = new AtividadeFisica (id, tipo, periodo);
+			this.praticouAtividadeFisica.add(at);
+		}
 	}
 	
-	public void AdicionarHistoricoPeso(){
-		
+	public void AdicionarHistoricoPeso(int id, float peso, boolean infoPac){
+		HistoricoPeso hp = null;
+		if (peso > 0){
+			hp = new HistoricoPeso(id, infoPac, peso);
+			this.historicoPeso.add(hp);
+		}
 	}
 
 	public int getId() {

@@ -10,11 +10,11 @@ public class ItemAlimentoConsumidoDieta {
 	private Calendar data;
 	
 	public ItemAlimentoConsumidoDieta (int id, Alimento alimentoExtra, int quantidade, 
-			int pontos, Calendar data){
+			Calendar data){
 		this.id = id;
 		this.alimentoExtra = alimentoExtra;
 		this.quantidade = quantidade;
-		this.pontos = pontos;
+		this.setPontos(quantidade, alimentoExtra);
 		this.data = data;
 	}
 
@@ -46,8 +46,8 @@ public class ItemAlimentoConsumidoDieta {
 		return pontos;
 	}
 
-	public void setPontos(int pontos) {
-		this.pontos = pontos;
+	public void setPontos(int quatidade, Alimento a) {
+		this.pontos = a.getPontos() * quantidade;
 	}
 
 	public Calendar getData() {
