@@ -1,4 +1,4 @@
-package beans;
+package ufrpe.negocio.beans;
 
 import java.sql.Date;
 import java.util.ArrayList;

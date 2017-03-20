@@ -1,4 +1,4 @@
-package beans;
+package ufrpe.negocio.beans;
 
 public class AtividadeFisica {
 	private int id;

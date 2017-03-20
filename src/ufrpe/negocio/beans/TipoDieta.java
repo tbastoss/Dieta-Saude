@@ -1,14 +1,12 @@
-package beans;
+package ufrpe.negocio.beans;
 
-public class SuplementoAlimentar {
+public class TipoDieta {
 	private int id;
 	private String descricao;
-	private int pontos;
 	
-	public SuplementoAlimentar(int id, String descricao, int pontos){
+	public TipoDieta (int id, String descricao){
 		this.id = id;
 		this.descricao = descricao;
-		this.pontos = pontos;
 	}
 
 	public int getId() {
@@ -25,13 +23,5 @@ public class SuplementoAlimentar {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public int getPontos() {
-		return pontos;
-	}
-
-	public void setPontos(int pontos) {
-		this.pontos = pontos;
 	}
 }

@@ -1,10 +1,10 @@
-package beans;
+package ufrpe.negocio.beans;
 
-public class TipoAlimento {
+public class Substancia {
 	private int id;
 	private String descricao;
 	
-	public TipoAlimento (int id, String descricao){
+	public Substancia (int id, String descricao){
 		this.id = id;
 		this.descricao = descricao;
 	}

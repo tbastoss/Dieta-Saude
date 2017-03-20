@@ -1,4 +1,4 @@
-package beans;
+package ufrpe.negocio.beans;
 
 public class Objetivo {
 	private int id;

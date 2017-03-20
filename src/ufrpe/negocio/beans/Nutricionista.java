@@ -1,4 +1,4 @@
-package beans;
+package ufrpe.negocio.beans;
 
 import java.util.ArrayList;
 import java.util.Calendar;
