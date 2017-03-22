@@ -1,5 +1,10 @@
 package ufrpe.dados.DAO.interfaces;
 
-public interface IBancoConnection {
+import java.sql.Connection;
+import java.sql.SQLException;;
 
+public interface IBancoConnection {
+	public Connection getConnection();
+	public void setConnectioNull();
+	public boolean commit () throws SQLException;
 }
