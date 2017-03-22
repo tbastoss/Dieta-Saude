@@ -5,12 +5,14 @@ import java.util.Calendar;
 public class HorarioDisponivel {
 	private int cod;
 	private String descricao;
-	private Calendar diaEHora;
+	private Calendar diaEHoraInicio;
+	private Calendar diaEHoraFim;
 	
-	public HorarioDisponivel (int cod, String descricao, Calendar diaEHora){
+	public HorarioDisponivel (int cod, String descricao, Calendar diaEHoraInicio, Calendar diaEHoraFim){
 		this.cod = cod;
 		this.descricao = descricao;
-		this.diaEHora = diaEHora;
+		this.diaEHoraInicio = diaEHoraInicio;
+		this.diaEHoraFim = diaEHoraFim;
 	}
 
 	public int getCod() {
@@ -29,11 +31,19 @@ public class HorarioDisponivel {
 		this.descricao = descricao;
 	}
 
-	public Calendar getDiaEHora() {
-		return diaEHora;
+	public Calendar getDiaEHoraInicio() {
+		return diaEHoraInicio;
 	}
 
-	public void setDiaEHora(Calendar diaEHora) {
-		this.diaEHora = diaEHora;
+	public void setDiaEHoraInicio(Calendar diaEHoraInicio) {
+		this.diaEHoraInicio = diaEHoraInicio;
+	}
+
+	public Calendar getDiaEHoraFim() {
+		return diaEHoraFim;
+	}
+
+	public void setDiaEHoraFim(Calendar diaEHoraFim) {
+		this.diaEHoraFim = diaEHoraFim;
 	}
 }
