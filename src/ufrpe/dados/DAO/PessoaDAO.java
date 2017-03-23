@@ -29,7 +29,7 @@ public class PessoaDAO implements IPessoaDAO{
 	
 	@Override
 	public void cadastrarPessoa(Pessoa pessoa) throws SQLException{
-		String query = "insert into pessoa(cpf, nome, data_nascimento, endereco, email, sexo, tipo) values (?, ?, ?, ?, ?, ?, ?)";
+		String query = "insert into dieta_saude.pessoa(cpf, nome, data_nascimento, endereco, email, sexo, tipo) values (?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = (PreparedStatement) this.connection.retornoStatement(query);
 		ps.setString(1, pessoa.getCpf());
 		ps.setString(2, pessoa.getNome());
@@ -47,7 +47,7 @@ public class PessoaDAO implements IPessoaDAO{
 	@Override
 	public ArrayList<Pessoa> listarPessoa() throws SQLException{
 		ArrayList<Pessoa> pessoas = new ArrayList();
-		String query = "select * from pessoa";
+		String query = "select * from dieta_saude.pessoa";
 		int i = 0;
 		
 		ResultSet resultSet = connection.comandoSQL(query);
