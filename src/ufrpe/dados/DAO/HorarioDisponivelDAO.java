@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import com.mysql.jdbc.Connection;
+
 import ufrpe.dados.DAO.interfaces.IHorarioDisponivelDAO;
 import ufrpe.negocio.beans.HorarioDisponivel;
 
@@ -32,15 +34,23 @@ public class HorarioDisponivelDAO implements IHorarioDisponivelDAO{
 	
 	@Override
 	public int cadastrarHoriarioDisponivel(HorarioDisponivel hp) throws SQLException {
+		int id = 0;
 		String query = "intsert into dieta_saude.horario_disponivel_nutricionista (cod, descricao, dia, hr_inicio, hr_fim) values (?, ?, ?, ?, ?)";
-		PreparedStatement ps = (PreparedStatement) this.connection.retornoStatement(query);
+		Connection con = (Connection) connection.getConnection();
+		PreparedStatement ps = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);//(PreparedStatement) this.connection.retornoStatement(query);
 		ps.setInt(1, hp.getCod());
 		ps.setString(2, hp.getDescricao());
 		ps.setDate(3, new java.sql.Date(hp.getDiaEHoraFim().getTime().getTime()));
 		ps.setTime(4, new java.sql.Time(hp.getDiaEHoraInicio().getTimeInMillis()));
 		ps.setTime(5, new java.sql.Time(hp.getDiaEHoraFim().getTimeInMillis()));
 		ps.execute();
-		return 0;
+		
+		ResultSet rs = ps.getGeneratedKeys();
+		rs.next();
+		
+		id = rs.getInt(1);
+		
+		return id;
 	}
 
 	@Override
