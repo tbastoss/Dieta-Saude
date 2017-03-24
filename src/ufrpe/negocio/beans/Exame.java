@@ -8,14 +8,16 @@ public class Exame {
 	private Calendar dataSolicitacao;
 	private Calendar dataRealizacao;
 	private TipoExame tipo;
+	private Consulta consulta;
 	
 	public Exame (int idExame, String obs, Calendar dataSolicitacao, 
-			Calendar dataRealizacao, TipoExame tipo){
+			Calendar dataRealizacao, TipoExame tipo, Consulta consulta){
 		this.idExame = idExame;
 		this.obs = obs;
 		this.dataSolicitacao = dataSolicitacao;
 		this.dataRealizacao = dataRealizacao;
 		this.tipo = tipo;
+		this.consulta = consulta;
 	}
 
 	public int getIdExame() {
@@ -56,5 +58,13 @@ public class Exame {
 
 	public void setTipo(TipoExame tipo) {
 		this.tipo = tipo;
+	}
+
+	public Consulta getConsulta() {
+		return consulta;
+	}
+
+	public void setConsulta(Consulta consulta) {
+		this.consulta = consulta;
 	}
 }

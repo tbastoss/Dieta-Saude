@@ -38,7 +38,7 @@ public class PessoaDAO implements IPessoaDAO{
 		ps.setString(5, pessoa.getEmail());
 		ps.setString(6, pessoa.getSexo() ? "M":"F");
 		boolean tipo = true;
-		if (pessoa.getTipoPessoa() == 1)
+		if (pessoa.getTipoPessoa() == 0)
 			tipo = false;
 		ps.setBoolean(7, tipo);
 		ps.execute();
@@ -67,7 +67,7 @@ public class PessoaDAO implements IPessoaDAO{
 				sexo = true;
 			else 
 				sexo = false;
-			int tipoPessoa = resultSet.getBoolean("tipo") ? 0:1;
+			int tipoPessoa = resultSet.getBoolean("tipo") ? 1:0;
 			
 			Pessoa pessoa = new Pessoa (i, tipoPessoa, cpf, nome, nasc, endereco, email, sexo, null);
 			pessoas.add(pessoa);
