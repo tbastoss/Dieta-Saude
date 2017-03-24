@@ -34,7 +34,7 @@ public class FuncionarioDAO implements IFuncionarioDAO{
 		PreparedStatement ps = (PreparedStatement) this.connection.retornoStatement(query);
 		ps.setString(1, funcionario.getCpf());
 		boolean tipo = false;
-		if (funcionario.getTipoFuncionario() == 0)
+		if (funcionario.getTipoFuncionario() == 1)
 			tipo = true;
 		ps.setBoolean(2, tipo);
 		ps.execute();
@@ -51,7 +51,7 @@ public class FuncionarioDAO implements IFuncionarioDAO{
 			String cpf = resultSet.getString("cpf_fun");
 			int tipo = 0;
 			boolean tipoSchema = resultSet.getBoolean("tipo");
-			if (tipoSchema == false)
+			if (tipoSchema == true)
 				tipo = 1;
 			Funcionario fun = new Funcionario (-1, tipo, cpf, null, null, null, null, false, null, -1);
 			funcionarios.add(fun);
