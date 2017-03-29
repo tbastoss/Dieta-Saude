@@ -19,6 +19,8 @@ public class BancoConnection implements IBancoConnection {
 	private ResultSet resultSet;
 	
 	//atributos static finals
+	private final static String userAdm = "adnSistema";
+	private final static String passAdm = "thiago1234";
 	private final static String userNutricionista = "nutricionistaSistema";
 	private final static String passNutricionista = "thiago1234";
 	private final static String userSecretario = "secretarioSistema";
@@ -93,6 +95,11 @@ public class BancoConnection implements IBancoConnection {
 			retorno = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/dieta_saude?autoReconnect=true&useSSL=false",userPaciente , passPaciente); 
 			retorno.setAutoCommit(false);
 			System.out.println("Logou como paciente");
+			break;
+		case 4:
+			retorno = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/dieta_saude?autoReconnect=true&useSSL=false",userAdm , passAdm);
+			retorno.setAutoCommit(false);
+			System.out.println("Logou como ADM");
 			break;
 		}
 		return null;
