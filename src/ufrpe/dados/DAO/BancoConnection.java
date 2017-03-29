@@ -19,7 +19,7 @@ public class BancoConnection implements IBancoConnection {
 	private ResultSet resultSet;
 	
 	//atributos static finals
-	private final static String userAdm = "adnSistema";
+	private final static String userAdm = "admSistema";
 	private final static String passAdm = "thiago1234";
 	private final static String userNutricionista = "nutricionistaSistema";
 	private final static String passNutricionista = "thiago1234";
