@@ -53,7 +53,7 @@ public class FuncionarioDAO implements IFuncionarioDAO{
 			boolean tipoSchema = resultSet.getBoolean("tipo");
 			if (tipoSchema == true)
 				tipo = 1;
-			Funcionario fun = new Funcionario (-1, tipo, cpf, null, null, null, null, false, null, -1);
+			Funcionario fun = new Funcionario (-1, 0, cpf, null, null, null, null, false, null, tipo);
 			funcionarios.add(fun);
 			
 		}

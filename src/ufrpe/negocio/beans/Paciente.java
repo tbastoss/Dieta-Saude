@@ -11,7 +11,7 @@ public class Paciente extends Pessoa{
 	private float altura;
 	private boolean vegetariano;
 	private boolean intoleranteLactose;
-	private float tmb;
+	private Tmb tmb;
 	private float fatorAtividade;
 	private ArrayList<Integer> pontosDiarios;
 	private ArrayList <Dieta> dieta;
@@ -64,6 +64,43 @@ public class Paciente extends Pessoa{
 		}
 	}
 
+	public float getFatorAtividade() {
+		return fatorAtividade;
+	}
+
+	public int getIdFatorAtividade() {
+		float fa = this.getFatorAtividade();
+		if(this.getSexo() == true){
+			if (fa == 1.2)
+				return 1;
+			else if (fa == 1.3)
+				return 2;
+			else if (fa == 1.4)
+				return 3;
+			else if (fa == 1.5)
+				return 4;
+			else if (fa == 1.6)
+				return 5;
+			else if (fa == 1.8)
+				return 6;
+		}
+		else {
+			if (fa == 1.2)
+				return 7;
+			else if (fa == 1.3)
+				return 8;
+			else if (fa == 1.35)
+				return 9;
+			else if (fa == 1.45)
+				return 10;
+			else if (fa == 1.5)
+				return 11;
+			else if (fa == 1.7)
+				return 12;
+		}
+		return 0; 
+	}
+
 	public float getPeso_atual() {
 		return peso_atual;
 	}
@@ -111,15 +148,6 @@ public class Paciente extends Pessoa{
 		this.intoleranteLactose = intoleranteLactose;
 	}
 
-	public float getTmb() {
-		return tmb;
-	}
-
-	private void setTmb(int idade, boolean sexo, float peso) {
-		int ano = Calendar.getInstance().get(Calendar.YEAR);
-		idade = ano - this.getDataDeNascimento().YEAR;
-	}
-
 	public ArrayList<Integer> getPontosDiarios() {
 		return pontosDiarios;
 	}
@@ -127,6 +155,14 @@ public class Paciente extends Pessoa{
 	public void setPontosDiarios(ArrayList<Integer> pontosDiarios) {
 		if (pontosDiarios != null)
 			this.pontosDiarios = pontosDiarios;
+	}
+
+	public Tmb getTmb() {
+		return tmb;
+	}
+
+	public void setTmb(Tmb tmb) {
+		this.tmb = tmb;
 	}
 	
 }
