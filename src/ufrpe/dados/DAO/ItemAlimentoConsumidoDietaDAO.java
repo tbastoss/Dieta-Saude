@@ -80,10 +80,13 @@ public class ItemAlimentoConsumidoDietaDAO implements
 		return retorno;
 	}
 
+	//TESTAR PARA V SE ESTÁ DELETANDO.
 	@Override
-	public void deletarItemAlimentoConsumidoDieta(ItemAlimentoConsumidoDieta a)
-			throws SQLException {
-		// TODO Auto-generated method stub
-
+	public void deletarItemAlimentoConsumidoDieta(ItemAlimentoConsumidoDieta a) throws SQLException {
+		String query = "DELETE FROM dieta_saude.alimento_consumido_dieta WHERE seq = ?";
+		Connection con = connection.getConnection();
+		PreparedStatement ps = (PreparedStatement)con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
+		ps.setInt(1, a.getId());
+		ps.execute();
 	}
 }

@@ -1,5 +1,6 @@
 package ufrpe.dados.DAO;
 
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,13 +44,13 @@ public class PessoaDAO implements IPessoaDAO{
 			tipo = false;
 		ps.setBoolean(8, tipo);
 		ps.execute();
+		System.out.println("Cadastrou");
 	}
 
 	@Override
 	public ArrayList<Pessoa> listarPessoa() throws SQLException{
 		ArrayList<Pessoa> pessoas = new ArrayList();
-		String query = "select * from dieta_saude.pessoa";
-		
+		String query = "select * from dieta_saude.pessoa;";
 		
 		ResultSet resultSet = connection.comandoSQL(query);
 		while (resultSet.next()){
@@ -59,8 +60,11 @@ public class PessoaDAO implements IPessoaDAO{
 			String senha = resultSet.getString("senha");
 			String nome = resultSet.getString("nome");
 			Date dataDeNascimento = resultSet.getDate("data_nascimento");
-			@SuppressWarnings("deprecation")
-			Calendar nasc = new GregorianCalendar (dataDeNascimento.getYear(), dataDeNascimento.getMonth(), dataDeNascimento.getDay());
+			//@SuppressWarnings("deprecation")
+			Calendar nasc = Calendar.getInstance();
+			nasc.setTime(dataDeNascimento);
+			nasc = new GregorianCalendar (nasc.get(Calendar.MONTH), nasc.get(Calendar.DAY_OF_MONTH), nasc.get(Calendar.YEAR));
+			//System.out.println(nasc);
 			String endereco = resultSet.getString("endereco");
 			String email = resultSet.getString("email");
 			boolean sexo = true;
@@ -77,10 +81,31 @@ public class PessoaDAO implements IPessoaDAO{
 		return pessoas;
 	}
 	
-	public static void main (String [] args) throws SQLException{
+	public static void main (String [] args){
 		PessoaDAO repPessoa = PessoaDAO.getInstance();
-		ArrayList<Pessoa> pessoas = repPessoa.listarPessoa();
-		System.out.println(pessoas.toString());
+		BancoConnection bc = BancoConnection.setInstance(4);
+		Calendar data_nasc = Calendar.getInstance();
+		data_nasc.set(Calendar.MONTH, 3);
+		data_nasc.set(Calendar.DAY_OF_MONTH, 16);
+		data_nasc.set(Calendar.YEAR, 1996);	
+		Connection con = bc.getConnection();
+		
+		Pessoa a  = new Pessoa(0, 1, "12345678901", "testJava", data_nasc, "endMeu", "emailMeu@hotmail.com", true, null, "1234");
+		try{
+			repPessoa.cadastrarPessoa(a);
+			con.commit();
+				
+		}catch(SQLException e){
+			try {
+				System.out.println(e.getMessage());
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+//		ArrayList<Pessoa> pessoas = repPessoa.listarPessoa();
+		//System.out.println(pessoas);
 	}
 	
 }

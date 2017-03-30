@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +18,7 @@ public class BancoConnection implements IBancoConnection {
 	private Connection connection;
 	private PreparedStatement statement;
 	private ResultSet resultSet;
+	private Statement st;
 	
 	//atributos static finals
 	private final static String userAdm = "admSistema";
@@ -72,6 +74,7 @@ public class BancoConnection implements IBancoConnection {
 	private BancoConnection (int user){
 		try{
 			connection = setConnection(user);
+			connection.setAutoCommit(false);
 		}catch (SQLException ex){
 			Logger.getLogger(BancoConnection.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -116,7 +119,8 @@ public class BancoConnection implements IBancoConnection {
 	
 	public ResultSet comandoSQL (String query){
 		try{
-			this.resultSet = this.statement.executeQuery();
+			st = connection.createStatement();
+			this.resultSet = st.executeQuery(query);
 		}catch (SQLException ex){
 			ex.printStackTrace();
 		}
