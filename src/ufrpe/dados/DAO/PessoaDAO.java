@@ -29,18 +29,19 @@ public class PessoaDAO implements IPessoaDAO{
 	
 	@Override
 	public void cadastrarPessoa(Pessoa pessoa) throws SQLException{
-		String query = "insert into dieta_saude.pessoa(cpf, nome, data_nascimento, endereco, email, sexo, tipo) values (?, ?, ?, ?, ?, ?, ?)";
+		String query = "insert into dieta_saude.pessoa(cpf, senha, nome, data_nascimento, endereco, email, sexo, tipo) values (?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = (PreparedStatement) this.connection.retornoStatement(query);
 		ps.setString(1, pessoa.getCpf());
-		ps.setString(2, pessoa.getNome());
-		ps.setDate(3, new java.sql.Date(pessoa.getDataDeNascimento().getTime().getTime())); //DATA
-		ps.setString(4, pessoa.getEndereco());
-		ps.setString(5, pessoa.getEmail());
-		ps.setString(6, pessoa.getSexo() ? "M":"F");
+		ps.setString(2, pessoa.getSenha());
+		ps.setString(3, pessoa.getNome());
+		ps.setDate(4, new java.sql.Date(pessoa.getDataDeNascimento().getTime().getTime())); //DATA
+		ps.setString(5, pessoa.getEndereco());
+		ps.setString(6, pessoa.getEmail());
+		ps.setString(7, pessoa.getSexo() ? "M":"F");
 		boolean tipo = true;
 		if (pessoa.getTipoPessoa() == 0)
 			tipo = false;
-		ps.setBoolean(7, tipo);
+		ps.setBoolean(8, tipo);
 		ps.execute();
 	}
 
@@ -55,6 +56,7 @@ public class PessoaDAO implements IPessoaDAO{
 			
 			//INFO PESSOA
 			String cpf = resultSet.getString("cpf");
+			String senha = resultSet.getString("senha");
 			String nome = resultSet.getString("nome");
 			Date dataDeNascimento = resultSet.getDate("data_nascimento");
 			@SuppressWarnings("deprecation")
@@ -69,7 +71,7 @@ public class PessoaDAO implements IPessoaDAO{
 				sexo = false;
 			int tipoPessoa = resultSet.getBoolean("tipo") ? 1:0;
 			
-			Pessoa pessoa = new Pessoa (i, tipoPessoa, cpf, nome, nasc, endereco, email, sexo, null);
+			Pessoa pessoa = new Pessoa (i, tipoPessoa, cpf, nome, nasc, endereco, email, sexo, null, senha);
 			pessoas.add(pessoa);
 			i++;
 		}

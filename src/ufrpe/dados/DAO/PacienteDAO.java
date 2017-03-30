@@ -6,8 +6,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import ufrpe.dados.DAO.interfaces.IPacienteDAO;
+import ufrpe.negocio.beans.FatorAtividade;
 import ufrpe.negocio.beans.Paciente;
 import ufrpe.negocio.beans.Pessoa;
+import ufrpe.negocio.beans.Tmb;
 
 public class PacienteDAO implements IPacienteDAO {
 	private static PacienteDAO instance;
@@ -28,7 +30,7 @@ public class PacienteDAO implements IPacienteDAO {
 		String query = "insert into dieta_saude.paciente (cpf_pac, id_fator, id_tmb, imc_atual, IMC_inicial, peso_inicial, intol_lactose, vegetariano, altura, peso_atual) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = (PreparedStatement)this.connection.retornoStatement(query);
 		ps.setString(1, paciente.getCpf());
-		ps.setInt(2, paciente.getIdFatorAtividade());
+		ps.setInt(2, paciente.getFatorAtividade().getId());
 		ps.setInt(3, paciente.getTmb().getId());
 		ps.setFloat(4, 0);
 		ps.setFloat(5, 0);
@@ -58,13 +60,15 @@ public class PacienteDAO implements IPacienteDAO {
 			float altura = resultSet.getFloat("altura");
 			float peso_atual = resultSet.getFloat("peso_atual");
 			
-			ArrayList<Pessoa> a = PessoaDAO.getInstance().listarPessoa();
-			Pessoa p = null;
-			for(int i =0; i < a.size() ; i++){
-				if(a.get(i).getCpf().equals(cpf_pac))
-					p = a.get(i);
-			}
-			Paciente pac = new Paciente(0, 1, cpf_pac, p.getNome(), p.getDataDeNascimento(), p.getEndereco(), p.getEmail(), p.getSexo(), p.getTelefones(), peso_atual, altura, vegetariano, intol_lactose, id_fator);
+			FatorAtividade fa = new FatorAtividade(id_fator);
+			Tmb tmb = new Tmb();
+			tmb.setId(id_tmb);
+			boolean sexo = false;
+			if(id_fator > 0 && id_fator <= 6)
+				sexo = true;
+			
+			
+			Paciente pac = new Paciente(-1, 1, cpf_pac, null, null, null, null, sexo, null, null, peso_atual, altura, vegetariano, intol_lactose, fa, tmb);
 			pacientes.add(pac);	
 		}
 		return pacientes;

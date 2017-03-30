@@ -1,13 +1,24 @@
 package ufrpe.negocio.beans;
 
+import java.util.Calendar;
+
 public class Tmb {
-	private static int id = 20;
+	private int id;
 	private boolean sexo; // true M false F
-	private float fator;
-	private String descricao;
+	private FatorAtividade valorFA;
+	private Calendar dt_inicio;
+	private Calendar dt_fim;
+	private int pontos;
 	
-	public Tmb (boolean sexo, float fator, String descricao){
-		id++;
+	public Tmb () {}
+	
+	public Tmb (int id, boolean sexo, FatorAtividade valorFA, String descricao, Calendar dt_inicio, Calendar dt_fim, int pontos){
+		this.id = id;
+		this.sexo = sexo;
+		this.valorFA = valorFA;
+		this.dt_inicio = dt_inicio;
+		this.dt_fim = dt_fim;
+		this.pontos = pontos;
 	}
 
 	public int getId() {
@@ -26,19 +37,35 @@ public class Tmb {
 		this.sexo = sexo;
 	}
 
-	public float getFator() {
-		return fator;
+	public FatorAtividade getValorFA() {
+		return valorFA;
 	}
 
-	public void setFator(float fator) {
-		this.fator = fator;
+	public void setValorFA(FatorAtividade valorFA) {
+		this.valorFA = valorFA;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public Calendar getDt_inicio() {
+		return dt_inicio;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDt_inicio(Calendar dt_inicio) {
+		this.dt_inicio = dt_inicio;
+	}
+
+	public Calendar getDt_fim() {
+		return dt_fim;
+	}
+
+	public void setDt_fim(Calendar dt_fim) {
+		this.dt_fim = dt_fim;
+	}
+
+	public int getPontos() {
+		return pontos;
+	}
+
+	public void setPontos(int pontos) {
+		this.pontos = pontos;
 	}
 }

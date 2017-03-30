@@ -13,10 +13,12 @@ public class Pessoa {
 	private String email;
 	private boolean sexo;	//true é M false é F
 	private ArrayList<String> telefones;
+	private String senha;
 	
 	public Pessoa(){};
 	
-	public Pessoa(int id, int tipoPessoa, String cpf, String nome, Calendar dataDeNascimento, String endereco, String email, boolean sexo, ArrayList<String> telefones){
+	public Pessoa(int id, int tipoPessoa, String cpf, String nome, Calendar dataDeNascimento, 
+			String endereco, String email, boolean sexo, ArrayList<String> telefones, String senha){
 		this.id = id;
 		this.tipoPessoa = tipoPessoa;
 		this.cpf = cpf;
@@ -25,10 +27,10 @@ public class Pessoa {
 		this.endereco = endereco;
 		this.email = email;
 		this.sexo = sexo;
-		this.telefones = telefones;		
+		this.telefones = telefones;	
+		this.senha = senha;
 	}
-
-
+	
 	public int getId() {
 		return id;
 	}
@@ -119,5 +121,13 @@ public class Pessoa {
 
 	public void setTelefones(ArrayList<String> telefones) {
 		this.telefones = telefones;
-	}	
+	}
+	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 }

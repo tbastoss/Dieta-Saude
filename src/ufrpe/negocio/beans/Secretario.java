@@ -8,9 +8,9 @@ public class Secretario extends Funcionario{
 
 	public Secretario(int id, int tipoPessoa, String cpf, String nome,
 			Calendar dataDeNascimento, String endereco, String email,
-			boolean sexo, ArrayList<String> telefones, int tipoFuncionario) {
+			boolean sexo, ArrayList<String> telefones, String senha, int tipoFuncionario) {
 		super(id, tipoPessoa, cpf, nome, dataDeNascimento, endereco, email, sexo,
-				telefones, tipoFuncionario);
+				telefones, senha, tipoFuncionario);
 	}
 	
 	

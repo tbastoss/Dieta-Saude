@@ -45,7 +45,7 @@ public class NutricionistaDAO implements INutricionistaDAO{
 		while(resultSet.next()){
 			String cpf = resultSet.getString("cpf_nut");
 			
-			Nutricionista nut = new Nutricionista(-1, 0, cpf, null, null, null, null, false, null, 1);
+			Nutricionista nut = new Nutricionista(-1, 0, cpf, null, null, null, null, false, null, null, 1);
 			nutricionistas.add(nut);
 			
 		}
