@@ -49,7 +49,7 @@ public class PessoaDAO implements IPessoaDAO{
 	public ArrayList<Pessoa> listarPessoa() throws SQLException{
 		ArrayList<Pessoa> pessoas = new ArrayList();
 		String query = "select * from dieta_saude.pessoa";
-		int i = 0;
+		
 		
 		ResultSet resultSet = connection.comandoSQL(query);
 		while (resultSet.next()){
@@ -71,11 +71,16 @@ public class PessoaDAO implements IPessoaDAO{
 				sexo = false;
 			int tipoPessoa = resultSet.getBoolean("tipo") ? 1:0;
 			
-			Pessoa pessoa = new Pessoa (i, tipoPessoa, cpf, nome, nasc, endereco, email, sexo, null, senha);
+			Pessoa pessoa = new Pessoa (-1, tipoPessoa, cpf, nome, nasc, endereco, email, sexo, null, senha);
 			pessoas.add(pessoa);
-			i++;
 		}
 		return pessoas;
+	}
+	
+	public static void main (String [] args) throws SQLException{
+		PessoaDAO repPessoa = PessoaDAO.getInstance();
+		ArrayList<Pessoa> pessoas = repPessoa.listarPessoa();
+		System.out.println(pessoas.toString());
 	}
 	
 }

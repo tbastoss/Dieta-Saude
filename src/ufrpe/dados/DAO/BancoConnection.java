@@ -53,7 +53,7 @@ public class BancoConnection implements IBancoConnection {
 	}
 	
 	public static BancoConnection getInstance (){
-		usuario = 2;
+		usuario = 4;
 		if (instance == null){
 			instance = new BancoConnection();
 		}
@@ -102,7 +102,7 @@ public class BancoConnection implements IBancoConnection {
 			System.out.println("Logou como ADM");
 			break;
 		}
-		return null;
+		return retorno;
 	}/**/
 	
 	public PreparedStatement retornoStatement (String query){

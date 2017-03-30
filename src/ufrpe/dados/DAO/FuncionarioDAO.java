@@ -61,4 +61,10 @@ public class FuncionarioDAO implements IFuncionarioDAO{
 		return funcionarios;
 	}
 	
+	public static void main (String [] args)throws SQLException{
+		FuncionarioDAO funRep = FuncionarioDAO.getInstance();
+		ArrayList<Funcionario> funs = funRep.listarFuncionario();
+		System.out.println(funs.toString());
+	}
+	
 }
