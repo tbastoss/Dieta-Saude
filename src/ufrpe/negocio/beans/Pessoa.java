@@ -14,6 +14,7 @@ public class Pessoa {
 	private boolean sexo;	//true é M false é F
 	private ArrayList<String> telefones;
 	
+	public Pessoa(){};
 	
 	public Pessoa(int id, int tipoPessoa, String cpf, String nome, Calendar dataDeNascimento, String endereco, String email, boolean sexo, ArrayList<String> telefones){
 		this.id = id;

@@ -17,6 +17,9 @@ public class Paciente extends Pessoa{
 	private ArrayList <Dieta> dieta;
 	private ArrayList <FichaDeAcompanhamento> fichaDeAcompanhamento;
 	
+	public Paciente() {
+		super();
+	}
 	
 	public Paciente(int id, int tipoPessoa, String cpf, String nome, Calendar dataDeNascimento, String endereco, String email, 
 			boolean sexo, ArrayList<String> telefones, float peso_atual, float altura, boolean vegetariano, 

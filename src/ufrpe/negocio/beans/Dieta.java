@@ -18,14 +18,14 @@ public class Dieta {
 	private ArrayList <ItemAlimentoConsumidoExtra> alimentoConsumidoExtra; //nao existente no banco de alimentos
 	private ArrayList <ItemAlimentoConsumidoDieta> alimentoConsumidoDieta; //existe no banco de alimentos mas nao deveria ter comido naquele momento/dia/refeição
 	private ArrayList <Refeicao> refeicoes;
-	ArrayList <SuplementoAlimentarConsumido> suplementoAlimentarConsumido;
+	private ArrayList <SuplementoAlimentarConsumido> suplementoAlimentarConsumido;
 	
-	public Dieta(int id, boolean prolongada, boolean finalizada,
+	public Dieta() {}
+
+	public Dieta(boolean prolongada, boolean finalizada,
 			Calendar dataInicio, Calendar dataFim, Objetivo objetivo,
 			Paciente pat, TipoDieta tipo,
 			ArrayList<Refeicao> refeicoes) {
-		
-		this.id = id;
 		this.prolongada = false;
 		this.finalizada = false;
 		this.dataInicio = dataInicio;
@@ -33,45 +33,7 @@ public class Dieta {
 		this.objetivo = objetivo;
 		this.pat = pat;
 		this.tipo = tipo;
-		this.historicoPeso = new ArrayList();
-		this.praticouAtividadeFisica = new ArrayList();
-		this.alimentoConsumidoExtra = new ArrayList();
-		this.alimentoConsumidoDieta = new ArrayList();
 		this.refeicoes = refeicoes;
-		this.suplementoAlimentarConsumido = new ArrayList();
-	}
-	
-	public void AdicionarAlimentoConsumidoExtra(int id, String descricao, Calendar dia, int pontos, int quantidade){
-		ItemAlimentoConsumidoExtra ae = null;
-		if(descricao != null && dia != null && pontos >= 0 && quantidade > 0){
-			ae = new ItemAlimentoConsumidoExtra (id, descricao, dia, pontos, quantidade);
-			this.alimentoConsumidoExtra.add(ae);
-		}
-		
-	}
-	
-	public void AdicionarAlimentoConsumidoDieta(int id, Alimento alimentoExtra, int quantidade, Calendar dia){
-		ItemAlimentoConsumidoDieta  ad = null;
-		if (alimentoExtra != null && quantidade > 0 &&  dia != null){
-			ad = new ItemAlimentoConsumidoDieta (id, alimentoExtra, quantidade, dia);
-			this.alimentoConsumidoDieta.add(ad);
-		}
-	}
-	
-	public void AdicionarPraticouAtividadeFisica(int id, TipoAtividadeFisica tipo, float periodo){
-		AtividadeFisica at = null;
-		if (tipo != null && periodo > 0){
-			at = new AtividadeFisica (id, tipo, periodo);
-			this.praticouAtividadeFisica.add(at);
-		}
-	}
-	
-	public void AdicionarHistoricoPeso(int id, float peso, boolean infoPac){
-		HistoricoPeso hp = null;
-		if (peso > 0){
-			hp = new HistoricoPeso(id, infoPac, peso);
-			this.historicoPeso.add(hp);
-		}
 	}
 
 	public int getId() {
@@ -81,6 +43,7 @@ public class Dieta {
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	public boolean isProlongada() {
 		return prolongada;

@@ -9,6 +9,8 @@ public class Alimento {
 	private TipoAlimento tipo;
 	private ArrayList <Substancia> substancias;
 	
+	public Alimento(){}
+	
 	public Alimento (int id, String descricao, int pontos, 
 			TipoAlimento tipo, ArrayList <Substancia> substancias){
 		this.id = id;

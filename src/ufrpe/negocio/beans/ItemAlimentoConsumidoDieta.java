@@ -3,27 +3,53 @@ package ufrpe.negocio.beans;
 import java.util.Calendar;
 
 public class ItemAlimentoConsumidoDieta {
-	private int id;
+	private Dieta dieta;
 	private Alimento alimentoExtra;
 	private int quantidade;
 	private int pontos;
 	private Calendar data;
+	private boolean isDieta;
+	private int id;
 	
-	public ItemAlimentoConsumidoDieta (int id, Alimento alimentoExtra, int quantidade, 
+	public ItemAlimentoConsumidoDieta (Dieta id, Alimento alimentoExtra, int quantidade, 
 			Calendar data){
-		this.id = id;
+		this.dieta = id;
 		this.alimentoExtra = alimentoExtra;
 		this.quantidade = quantidade;
 		this.setPontos(quantidade, alimentoExtra);
 		this.data = data;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public void setDieta(boolean isDieta) {
+		this.isDieta = isDieta;
+	}
+
+	public boolean isDieta() {
+		return this.isDieta;
+	}
+
+	public void setIsDieta(boolean isDieta) {
+		this.isDieta = isDieta;
+	}
+
+	public void setPontos(int pontos) {
+		this.pontos = pontos;
+	}
+
+	public Dieta getDieta() {
+		return dieta;
+	}
+
+	public void setDieta(Dieta d) {
+		this.dieta = d;
 	}
 
 	public Alimento getAlimentoExtra() {
